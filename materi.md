@@ -7,7 +7,7 @@ Container registry : untuk untuk menyimpan image docker
 
 Docker image: distribution file atau aplikasi (hasil bundle aplikasi) aplikasi yang sudah jadi, siap untuk dijalankan.
 
-> Container : image yang kita running
+Container : image yang kita running
 
 ## Install Docker
 Get Docker: https://docs.docker.com/get-docker/
