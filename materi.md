@@ -1,11 +1,11 @@
 # Docker
-> Docker : project opensource untuk deploy aplikasi menggunakan container.
+Docker : project opensource untuk deploy aplikasi menggunakan container.
 
-> Container: Image yang di running / hasil instansiasi dari image
+Container: Image yang di running / hasil instansiasi dari image
 
-> Container registry : untuk untuk menyimpan image docker
+Container registry : untuk untuk menyimpan image docker
 
-> Docker image: distribution file atau aplikasi (hasil bundle aplikasi) aplikasi yang sudah jadi, siap untuk dijalankan.
+Docker image: distribution file atau aplikasi (hasil bundle aplikasi) aplikasi yang sudah jadi, siap untuk dijalankan.
 
 > Container : image yang kita running
 
@@ -67,7 +67,7 @@ mengotomatisasi penempatan, penskalaan, dan manajemen aplikasi yang berada dalam
 ## Install Kubernetes
 
 ### Install choco
-```
+```bash
 Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManager]::SecurityProtocol = [System.Net.ServicePointManager]::SecurityProtocol -bor 3072; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
 ```
 
@@ -75,13 +75,24 @@ Set-ExecutionPolicy Bypass -Scope Process -Force; [System.Net.ServicePointManage
 https://www.virtualbox.org/wiki/Downloads
 
 ### Install minikube
-choco install minikube -y
+```bash
+$ choco install minikube -y
+```
 
 ## Ingress
-> choco install openssl
+```bash
+$ choco install openssl
+```
 
-> openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout goapp.key -out goapp.crt
+```bash
+$ openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout goapp.key -out goapp.crt
+```
 
-> C:\Windows\System32\Drivers\etc\hosts
+Edit file
+```bash
+$ C:\Windows\System32\Drivers\etc\hosts
+```
 
-> kubectl create secret tls goapp-secret-tls --key goapp.key --cert goapp.crt
+```bash
+$ kubectl create secret tls goapp-secret-tls --key goapp.key --cert goapp.crt
+```
