@@ -1,0 +1,29 @@
+version: '3.1'
+
+networks:
+  default:
+    driver: bridge
+
+services:
+  mariadb:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: goapp
+      MYSQL_USER: swd
+      MYSQL_PASSWORD: swd_password
+    ports:
+      - 23306:3306
+    networks:
+      - default
+  goapp:
+    image: swadharma/goapp
+    restart: always
+    environment:
+      NAME: Julia Keeva
+    ports:
+      - 18080:8080
+    networks:
+      - default

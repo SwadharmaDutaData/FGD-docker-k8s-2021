@@ -1,0 +1,19 @@
+version: '3.1'
+
+networks:
+  default:
+    driver: bridge
+
+services:
+  mariadb:
+    image: mariadb
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root_pass
+      MYSQL_DATABASE: goapp
+      MYSQL_USER: swd
+      MYSQL_PASSWORD: swd_password
+    ports:
+      - 13306:3306
+    networks:
+      - default

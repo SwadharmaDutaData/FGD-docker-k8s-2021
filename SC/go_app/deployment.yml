@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: goapp
+  labels:
+    app: goapp
+spec:
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  selector:
+    app: goapp
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goapp
+  labels:
+    app: goapp
+spec:
+  selector:
+    matchLabels:
+      app: goapp
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: goapp
+    spec:
+      containers:
+      - image: meziaris/goapp:k8s
+        name: goapp
+        env:
+        - name: NAME
+          value: Julia Keeva
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            cpu: 100m
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: goapp-ingress
+  labels:
+    app: goapp
+spec:
+  tls:
+  - secretName: goapp-ingress-tls
+    hosts:
+      - goapp.dev
+  rules:
+    - host: goapp.dev
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: goapp
+                port:
+                  number: 8080
